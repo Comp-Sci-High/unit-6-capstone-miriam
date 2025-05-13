@@ -15,26 +15,76 @@ app.use((req, res, next) => {
     next();
 });
 
-const resources = new mongoose.Schema(
-    {
+const sourceSchema = new mongoose.Schema({
     name: { type: String, required: true },
     link: {type: String, required: true },
-    about: {type: String, required: true},
-    image: {}
+    about: {type: String, required: true}
 });
 
 const Source = mongoose.model("Source", sourceSchema, "Sources");
 
-const input = new mongoose.Schema({
+
+
+const postSchema = new mongoose.Schema({
 imageLocation: {type: String, required: true},
 image: {type: String, required: true},
 description: {type: String, required: true},
 });
+const Post = mongoose.model("Post", postSchema, "Posts");
 
-const Input = mongoose.model("Input", inputSchema, "Inputs")
+app.get("/resources", async (req, res) => {
+    const sources = await Source.find({});
+    res.render("find.ejs", { sources })
+});
 
-// schema, model, get post, patch, delete, route cruds to pages SCHEMA AND CRUD ROUTES
+//-----------------------------------
 
-app.get("/", async (req, res) => {
-    const sources = await Sources 
+app.get("/posts", async (req, res) => {
+    const posts = await Post.find({});
+    res.render("post.ejs", { posts })
 })
+
+app.delete("/posts/:_id", async (req, res) => {
+    const post = await Post.findOneAndDelete({ _id: req.params._id })
+    res.json(post);
+    });
+
+   app.patch("/posts/:_id", async (req, res) => {
+    const post = await Post.findOneAndUpdate({_id: req.params._id }, 
+    req.body, {new: true})
+    res.json(post);
+    });
+     
+
+
+async function prepopulateDb() {
+    try {
+        await Source.deleteMany({});
+        await Source.insertMany([
+           {name: "Global Health Corps (GHC)", link: "https://ghcorps.org/", about: "GHC was founded on the belief that leadership is the greatest lever for change in global health."},
+           {name: "NYU Langone Health", link: "https://jobs.nyulangone.org/", about: "Make a difference every day at NYU Langone Health. Join us as we deliver outstanding care at our patient-centered, world-class, integrated academic health system."},
+           {name: "NYC Medical Reserve Corps (MRC)", link: "https://www.nyc.gov/site/doh/providers/emergency-prep/nyc-medical-reserve-corps.page", about: "The mission of the New York City Medical Reserve Corp (NYC MRC) is to strengthen public health, improve emergency response and build community resilience. The organization consists of over 15,000 medical and non-medical volunteers who are deployed to respond to public health emergencies and participate in health-related community activities."},
+           {name: "Public Health AmeriCorps", link: "https://www.americorps.gov/serve/americorps/americorps-state-national", about: "Advance more equitable health outcomes for underserved communities with Public Health AmeriCorps."},
+        ]);
+        console.log('Resources added successfully!');
+        } catch (err) {
+        console.error('Error prepopulating database:', err);
+        }
+        }
+
+
+        
+        
+async function startServer() {
+    // Add your SRV string, make sure that the database is called SE12
+    await mongoose.connect("mongodb+srv://CSH:CSH2025@cluster0.6uo1d.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0");
+
+    // Uncomment this and run ONCE to add some students for editing and deleting
+    prepopulateDb()
+
+    app.listen(3000, () => {
+        console.log(`Server running.`);
+    });
+}
+
+startServer();
