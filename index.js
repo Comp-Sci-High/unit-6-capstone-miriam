@@ -54,6 +54,25 @@ app.delete("/posts/:_id", async (req, res) => {
     req.body, {new: true})
     res.json(post);
     });
+
+     app.post("/contact/save", async (req, res) => {
+     const con1 = await new User({
+     user: "Mayri Clemente",
+     email: "Mayrisomethinggg@gmail.com",
+     about: "shdwhhdw",
+     }).save()
+     res.json(con1);
+     });
+
+     app.post("/contact/save", async (req, res) => {
+     const con2 = await new User({
+     user: "VAW Global Health Alliances",
+     located: "8595 Pelham Rd, Suite 400 #301 Greenville, SC 29615, USA",
+     email: "teamdevelopment@vawglobal.org",
+     }).save()
+     res.json(con2);
+     });
+
      
 
 
