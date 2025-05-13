@@ -32,16 +32,19 @@ description: {type: String, required: true},
 });
 const Post = mongoose.model("Post", postSchema, "Posts");
 
-app.get("/resources", async (req, res) => {
-    const sources = await Source.find({});
-    res.render("find.ejs", { sources })
+
+
+app.get("/", async (req, res) => {
+  const sources = await Source.find({}).sort({ createdAt: -1 });
+  res.render("finds.ejs", { sources });
 });
+
 
 //-----------------------------------
 
 app.get("/posts", async (req, res) => {
     const posts = await Post.find({});
-    res.render("post.ejs", { posts })
+    res.render("posts.ejs", { posts })
 })
 
 app.delete("/posts/:_id", async (req, res) => {
@@ -52,7 +55,7 @@ app.delete("/posts/:_id", async (req, res) => {
    app.patch("/posts/:_id", async (req, res) => {
     const post = await Post.findOneAndUpdate({_id: req.params._id }, 
     req.body, {new: true})
-    res.json(post);
+    res.json(posts);
     });
 
      app.post("/contact/save", async (req, res) => {
@@ -72,9 +75,6 @@ app.delete("/posts/:_id", async (req, res) => {
      }).save()
      res.json(con2);
      });
-
-     
-
 
 async function prepopulateDb() {
     try {
