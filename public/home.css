@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fffaf7;
+  color: #4a2c2a;
+  transition: all 0.3s ease;
+}
+
+.navbar {
+  background-color: #fce4ec;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #4a2c2a;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #4a2c2a;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #d48b91;
+}
+
+.hero {
+  text-align: center;
+  padding: 8rem 2rem;
+  background-color: #ffeef0;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  color: #5e3c3a;
+}
+
+.btn {
+  background-color: #d48b91;
+  color: white;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #b56d74;
+  transform: scale(1.05);
+}
+
+
+.programs {
+  padding: 4rem 2rem;
+  background-color: #fffaf7;
+}
+
+.section-title {
+  color: #4a2c2a;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: left;
+  padding-left: 1rem;
+}
+
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 0 1rem;
+}
+
+.card {
+  background-color: #fce4ec;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.card-image {
+  background-color: #ffeef0;
+  height: 150px;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #b56d74;
+  font-weight: bold;
+}
+
+.card h3 {
+  color: #4a2c2a;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  color: #5e3c3a;
+  font-size: 0.95rem;
+}
