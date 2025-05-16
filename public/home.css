@@ -6,11 +6,12 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #fffaf7;
+  background-color: #ffeef0; /* Unified light pink background */
   color: #4a2c2a;
   transition: all 0.3s ease;
 }
 
+/* Navbar */
 .navbar {
   background-color: #fce4ec;
   padding: 1rem 2rem;
@@ -18,6 +19,11 @@ body {
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.logo-img {
+  width: 47px; 
+  height: auto; 
 }
 
 .logo {
@@ -43,6 +49,7 @@ body {
   color: #d48b91;
 }
 
+/* Hero Section */
 .hero {
   text-align: center;
   padding: 8rem 2rem;
@@ -76,10 +83,10 @@ body {
   transform: scale(1.05);
 }
 
-
+/* Programs Section */
 .programs {
   padding: 4rem 2rem;
-  background-color: #fffaf7;
+  background-color: #ffeef0; /* Make this match the hero */
 }
 
 .section-title {
@@ -90,6 +97,7 @@ body {
   padding-left: 1rem;
 }
 
+/* Card Layout */
 .card-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -112,7 +120,7 @@ body {
 }
 
 .card-image {
-  background-color: #ffeef0;
+  background-color: #fff0f3;
   height: 150px;
   border-radius: 12px;
   margin-bottom: 1rem;

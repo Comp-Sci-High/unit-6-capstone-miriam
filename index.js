@@ -18,8 +18,8 @@ app.use((req, res, next) => {
 
 const homeSchema = new mongoose.Schema({
     name: { type: String, required: true },
-    link: {type: String, required: true },
-    about: {type: String, required: true}
+    email: {type: String, required: true },
+    question: {type: String, required: true}
 });
 
 const Home = mongoose.model("Home", homeSchema, "Homes");

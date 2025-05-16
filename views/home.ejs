@@ -10,7 +10,10 @@
 <body>
 
   <nav class="navbar">
-    <div class="logo">VAW Global Health Alliance</div>
+  <div class="logo">
+    <img src="https://www.vawglobal.org/wp-content/themes/vaw/images/logo-v2.png" alt="Logo" class="logo-img" />
+    <span class="logo-text">Global Health Alliance</span>
+  </div>
     <ul class="nav-links">
       <li><a href="/resources">Resources</a></li>
       <li><a href="/posts">Posts</a></li>
@@ -21,9 +24,11 @@
   <header class="hero">
     <h1>Mayri's VAW Mexico Chapter</h1>
     <p>help!🌸</p>
+
+
     <a href="#" class="btn">Explore More</a>
     <br>
-    <br>
+    
     <br>
     <h7> Comments and Posts</h7>
 
@@ -34,7 +39,7 @@
   <div class="card-container">
     <!-- Card 1 -->
     <div class="card">
-      <div class="card-image">Image Here</div>
+      <div class="card-image"> Here</div>
       <h3>Medical Outreach</h3>
       <p>Assist in providing general healthcare education, taking vitals, and supporting local clinics.</p>
     </div>
@@ -50,11 +55,63 @@
       <h3>Veterinary Outreach</h3>
       <p>Help in caring for animals, supporting vaccination efforts, and promoting animal health awareness.</p>
     </div>
+
+  <!-- Card 4 -->
+   <div class="card">
+      <div class="card-image">Image Here</div>
+      <h3>Global Public Health Outreach</h3>
+      <p>Aiding in water, and environmental issues.</p>
+    </div>
   </div>
+
+
+
+<br>
+<br>
+
+    <div class="form-section">
+     <center> <h2>For More Information:</h2> </center>
+      
+<br>
+      <center> <form>
+        <label> Name: </label>
+        <input type="text" name="link" required/>
+        
+        <label> Email: </label>
+        <input type="text" name="email" required/>
+
+      
+        <label> Question: </label>
+        <input type="text" name="question" required/>
+
+        <button type = "submit">Submit</button>
+
+        </form>
+</center>
+
+       
+
+    <div class="form-grid">
+      <% for (let i = 0; i < homes.length; i++) { %>
+        <div class="form1-card">
+          <div class="homes">
+            <h2><%= homes[i].name %></h2>
+            <p><strong>email:</strong> <%= homes[i].email %></p>
+            <p><strong>question:</strong> <%= homes[i].question %></p>
+          </div>
+        </div>
+      <% } %>
+    </div>
+
+
+
+
+
 </section>
+<center><h7> VAW Global Health Alliances is a for-profit company | Contact Email: mc9783@nyu.edu </h7></center>
 
-
-
+<br>
+<br>
 
 
 </body>
