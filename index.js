@@ -11,7 +11,7 @@ app.use(express.json());
 app.set ("view engine", "ejs");
 
 app.use((req, res, next) => {
-    console.log('${req.method}: ${req.path}');
+    console.log(`${req.method}: ${req.path}`);
     next();
 });
 
@@ -25,13 +25,22 @@ const homeSchema = new mongoose.Schema({
 const Home = mongoose.model("Home", homeSchema, "Homes");
 
 
-const resourceSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
-    link: {type: String, required: true },
-    about: {type: String, required: true}
+    email: {type: String, required: true },
+    question: {type: String, required: true}
 });
 
-const  Resource = mongoose.model("Resource", resourceSchema, "Resources");
+const User = mongoose.model("User", userSchema, "Users");
+
+const sourceSchema = new mongoose.Schema({
+    name: { type: String, required: true },
+    email: {type: String, required: true },
+    question: {type: String, required: true}
+});
+
+const Source = mongoose.model("Source", sourceSchema, "Sources");
+
 
 const postSchema = new mongoose.Schema({
 imageLocation: {type: String, required: true},
@@ -46,11 +55,6 @@ app.get("/", async (req, res) => {
 });
 
 
-app.get("/resources", async (req, res) => {
-    const resources = await Resource.find({});
-    res.render("finds.ejs", { resources })
-});
-
 app.get("/posts", async (req, res) => {
     const posts = await Post.find({});
     res.render("posts.ejs", { posts })
@@ -64,10 +68,10 @@ app.delete("/posts/:_id", async (req, res) => {
 app.patch("/posts/:_id", async (req, res) => {
     const post = await Post.findOneAndUpdate({_id: req.params._id }, 
     req.body, {new: true})
-    res.json(posts);
+    res.json(post);
 });
 
-app.post("/contact/save", async (req, res) => {
+app.post("/contact/saveMayri", async (req, res) => {
      const con1 = await new User({
      user: "Mayri Clemente",
      email: "Mayrisomethinggg@gmail.com",
@@ -76,7 +80,7 @@ app.post("/contact/save", async (req, res) => {
      res.json(con1);
 });
 
-app.post("/contact/save", async (req, res) => {
+app.post("/contact/saveVAW", async (req, res) => {
     const con2 = await new User({
     user: "VAW Global Health Alliances",
     located: "8595 Pelham Rd, Suite 400 #301 Greenville, SC 29615, USA",
