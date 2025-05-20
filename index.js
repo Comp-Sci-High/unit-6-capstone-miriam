@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const express = require("express");
-
+const multer = require('multer');
 const app = express();
-
+const upload = multer({ dest: 'images/' })
 
 
 app.use(express.static(__dirname + "/public"));
@@ -41,10 +41,9 @@ const sourceSchema = new mongoose.Schema({
 
 const Source = mongoose.model("Source", sourceSchema, "Sources");
 
-
 const postSchema = new mongoose.Schema({
-imageLocation: {type: String, required: true},
 image: {type: String, required: true},
+location: {type: String, required: true},
 description: {type: String, required: true},
 });
 const Post = mongoose.model("Post", postSchema, "Posts");
@@ -57,7 +56,10 @@ app.get("/", async (req, res) => {
 
 app.get("/posts", async (req, res) => {
     const posts = await Post.find({});
-    res.render("posts.ejs", { posts })
+    const imageImg = req.file.filename
+    const description = req.body.description
+    console.log(description, imageImg)
+    res.render("posts.ejs", { description, imageImg })
 })
 
 app.delete("/posts/:_id", async (req, res) => {
@@ -70,6 +72,15 @@ app.patch("/posts/:_id", async (req, res) => {
     req.body, {new: true})
     res.json(post);
 });
+
+//app.post("/saveImg", async (req, res) => {
+     const imageImg = req.
+    // }).save()
+    // res.json(con1);
+//});
+
+
+
 
 app.post("/contact/saveMayri", async (req, res) => {
      const con1 = await new User({
