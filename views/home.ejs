@@ -32,36 +32,26 @@
 
   </header>
 
+
 <section class="programs">
   <h2 class="section-title">Programs Available</h2>
   <div class="card-container">
-    <!-- Card 1 -->
+    
     <div class="card">
       <div class="card-image"> Here</div>
       <h3>Medical Outreach</h3>
       <p>Assist in providing general healthcare education, taking vitals, and supporting local clinics.</p>
     </div>
-    <!-- Card 2 -->
-    <div class="card">
-      <div class="card-image">Image Here</div>
-      <h3>Dental Outreach</h3>
-      <p>Support dental hygiene efforts, assist with cleanings, and educate on oral health care.</p>
-    </div>
-    <!-- Card 3 -->
-    <div class="card">
-      <div class="card-image">Image Here</div>
-      <h3>Veterinary Outreach</h3>
-      <p>Help in caring for animals, supporting vaccination efforts, and promoting animal health awareness.</p>
-    </div>
+    
 
-  <!-- Card 4 -->
-   <div class="card">
-      <div class="card-image">Image Here</div>
-      <h3>Global Public Health Outreach</h3>
-      <p>Aiding in water, and environmental issues.</p>
-    </div>
-  </div>
-
+    
+<div class="card-container">
+      <% card.for((card) =>{ %>
+<div class="card">
+<img src="<%= card.image %>" alt="<%= card.title %>">
+<h3><%= card.name %></h3>
+<p> <% card.description %></p>
+</div>
 
 
 <br>
@@ -86,6 +76,7 @@
 
         </form>
 </center>
+
 
        
 

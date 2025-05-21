@@ -74,7 +74,7 @@ app.patch("/posts/:_id", async (req, res) => {
 });
 
 //app.post("/saveImg", async (req, res) => {
-     const imageImg = req.
+    // const imageImg = req.
     // }).save()
     // res.json(con1);
 //});
