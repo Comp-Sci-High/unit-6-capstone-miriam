@@ -25,18 +25,10 @@ const homeSchema = new mongoose.Schema({
 const Home = mongoose.model("Home", homeSchema, "Homes");
 
 
-const userSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    email: {type: String, required: true },
-    question: {type: String, required: true}
-});
-
-const User = mongoose.model("User", userSchema, "Users");
-
 const sourceSchema = new mongoose.Schema({
     name: { type: String, required: true },
-    email: {type: String, required: true },
-    question: {type: String, required: true}
+    image: {type: String, required: true },
+    description: {type: String, required: true}
 });
 
 const Source = mongoose.model("Source", sourceSchema, "Sources");
@@ -52,6 +44,19 @@ app.get("/", async (req, res) => {
   const homes = await Home.find({}).sort({ createdAt: -1 });
   res.render("home.ejs", { homes });
 });
+
+
+const outreachData = [{ name: "Medical", image: "https://sitiorandom.com/wp-content/uploads/2024/08/Goldfish-2-e1724099193229.webp", description: "idk" }, { name: "Dental", image: "https://sitiorandom.com/wp-content/uploads/2024/08/Goldfish-2-e1724099193229.webp", description: "idk"}, 
+{ name: "Vetenary", image: "https://sitiorandom.com/wp-content/uploads/2024/08/Goldfish-2-e1724099193229.webp", description: "idk" }, { name: "Global", image: "https://sitiorandom.com/wp-content/uploads/2024/08/Goldfish-2-e1724099193229.webp", description: "idk"}];
+
+app.get('/source/:outreachData', (req, res) => {
+const i = req.params.index
+   res.render('home.ejs', outreachData[i]);
+   })
+
+
+
+
 
 
 app.get("/posts", async (req, res) => {
